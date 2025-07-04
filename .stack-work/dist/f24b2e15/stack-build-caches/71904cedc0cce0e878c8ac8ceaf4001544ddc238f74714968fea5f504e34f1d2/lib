@@ -7,7 +7,7 @@ C:\Users\cdrec\OneDrive\Crafting-Interpretors\.stack-work\dist\f24b2e15\build\au
 C:\Users\cdrec\OneDrive\Crafting-Interpretors\README.md:
   hash: 5779e00efc4495b89b1c8573d57f8544d0c1976bed3180c8d13519b18feda348
 C:\Users\cdrec\OneDrive\Crafting-Interpretors\hlox.cabal:
-  hash: b8cffeacb7ebf65347f226c9c9cdd8625ff65c938fc7056b78eff8079bdf7053
+  hash: ec6d12705f8c1c630ec96a04947aca8037161542f592ee86aed26482a27c4e10
 C:\Users\cdrec\OneDrive\Crafting-Interpretors\package.yaml:
   hash: 2f6898fac9244a42af5efa0c45624b91ed367189cbf2d07d2096a7b2dc27a079
 C:\Users\cdrec\OneDrive\Crafting-Interpretors\src\Environment.hs:
@@ -18,6 +18,8 @@ C:\Users\cdrec\OneDrive\Crafting-Interpretors\src\Interpreter.hs:
   hash: ac4031b61a3f3c3cb6291bc2f384c056cd6de34c4f9c68f83a524e646dda821a
 C:\Users\cdrec\OneDrive\Crafting-Interpretors\src\Lox.hs:
   hash: e552324e9c10dfd2515469f5d48ec942c8114909f19e32c2b817f30c7e9acac2
+C:\Users\cdrec\OneDrive\Crafting-Interpretors\src\Lox\Types.hs:
+  hash: 564336fa7dc2f9118044bf139cd47ed4ef5d629186fcb63404378630dc36f1c0
 C:\Users\cdrec\OneDrive\Crafting-Interpretors\src\Parser.hs:
   hash: d08ec72e3751f332b6ec7e874a1042ce355b97943dd049f82ce486e5c603f9fb
 C:\Users\cdrec\OneDrive\Crafting-Interpretors\src\Scanner.hs:

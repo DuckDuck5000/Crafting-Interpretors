@@ -23,6 +23,7 @@ library
       Environment
       Expr
   other-modules:
+      Lox.Types
       Paths_hlox
   autogen-modules:
       Paths_hlox

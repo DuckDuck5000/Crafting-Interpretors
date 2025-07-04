@@ -210,8 +210,6 @@ This implementation addresses many of the challenges from the [Crafting Interpre
 
 ## 🤔 Why Haskell?
 
-While the original book uses Java and C, implementing Lox in Haskell provides several benefits:
-
 - **🎯 Type Safety** - Haskell's strong type system catches many errors at compile time
 - **🧩 Pattern Matching** - Perfect for AST traversal and evaluation
 - **⚡ Monads** - Clean error handling with `StateT` and `ExceptT`
