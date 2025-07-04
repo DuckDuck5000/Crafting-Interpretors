@@ -2,8 +2,8 @@
 name:                hlox
 version:             0.1.0.0
 license:             BSD-3-Clause
-author:              "Your Name"
-maintainer:          "your.email@example.com"
+author:              "chris rectenwald"
+maintainer:          "cdrectenwald@example.com"
 
 extra-source-files:
    - README.md
@@ -13,10 +13,16 @@ library:
     - Token
     - Scanner
     - Lox
+    - Parser
+    - Interpreter
+    - Environment
+    - Expr
   source-dirs:
     - src
   dependencies:
     - base >=4.7 && <5
+    - mtl
+    - containers
   language: Haskell2010
 
 executables:
@@ -27,8 +33,23 @@ executables:
     dependencies:
       - hlox
       - base >=4.7 && <5
+      - mtl
+      - containers
     ghc-options:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
     language: Haskell2010
+
+tests:
+  hlox-test:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+      - hlox
+      - base >=4.7 && <5
+      - hspec
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N

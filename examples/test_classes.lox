@@ -1,0 +1,51 @@
+// Classes and Objects Test
+// Testing class definitions, inheritance, and methods
+
+print "=== Classes and Objects Tests ===";
+
+// Basic class
+class Person {
+    init(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    sayHello() {
+        print "Hello, I'm " + this.name + " and I'm " + this.age + " years old.";
+    }
+    
+    birthday() {
+        this.age = this.age + 1;
+        print this.name + " is now " + this.age + " years old!";
+    }
+}
+
+var person1 = Person("Alice", 25);
+person1.sayHello();
+person1.birthday();
+
+// Inheritance
+class Student < Person {
+    init(name, age, school) {
+        super.init(name, age);
+        this.school = school;
+    }
+    
+    study() {
+        print this.name + " is studying at " + this.school;
+    }
+    
+    sayHello() {
+        super.sayHello();
+        print "I study at " + this.school;
+    }
+}
+
+var student1 = Student("Bob", 20, "University");
+student1.sayHello();
+student1.study();
+student1.birthday();
+
+// Method binding
+var method = person1.sayHello;
+method(); // Should still work with 'this' bound to person1

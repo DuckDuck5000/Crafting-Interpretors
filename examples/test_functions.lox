@@ -1,0 +1,52 @@
+// Functions Test
+// Testing function definitions and calls
+
+print "=== Function Tests ===";
+
+// Simple function
+fun greet(name) {
+    print "Hello, " + name + "!";
+}
+
+greet("Alice");
+greet("Bob");
+
+// Function with return value
+fun add(a, b) {
+    return a + b;
+}
+
+var result = add(5, 3);
+print "5 + 3 = " + result;
+
+// Recursive function (factorial)
+fun factorial(n) {
+    if (n <= 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+print "Factorial of 5: " + factorial(5);
+
+// Function with local variables
+fun calculate() {
+    var x = 10;
+    var y = 20;
+    var sum = x + y;
+    return sum;
+}
+
+print "Calculate result: " + calculate();
+
+// Higher-order function example
+fun makeAdder(x) {
+    fun adder(y) {
+        return x + y;
+    }
+    return adder;
+}
+
+var addFive = makeAdder(5);
+print "Adding 5 to 10: " + addFive(10);

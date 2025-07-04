@@ -1,0 +1,4 @@
+// Simple expression test
+print "Hello";
+print 2 + 3;
+print "Result: " + 42;

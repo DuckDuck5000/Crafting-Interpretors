@@ -1,0 +1,38 @@
+// Basic Lox Test File
+// This file tests the fundamental features of the Lox interpreter
+
+print "Hello, Lox!";
+
+// Variables and basic arithmetic
+var a = 10;
+var b = 20;
+var c = a + b;
+print "a + b = " + c;
+
+// String concatenation
+var name = "World";
+print "Hello, " + name + "!";
+
+// Boolean operations
+var isTrue = true;
+var isFalse = false;
+print isTrue;
+print !isFalse;
+
+// Comparison operations
+print 5 > 3;
+print 10 <= 10;
+print 7 == 7;
+print 5 != 3;
+
+// Nil value
+var nothing = nil;
+print nothing;
+
+// Expression evaluation
+print (3 + 4) * 2;
+print 2 + 3 * 4; // Should be 14 (3*4 + 2)
+
+// Logical operators
+print true and false;
+print true or false;

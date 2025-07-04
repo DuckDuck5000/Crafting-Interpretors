@@ -12,6 +12,8 @@ scanTokens input = tokenize input 1 1 []
       case c of
         '(' -> addTok LeftParen
         ')' -> addTok RightParen
+        '{' -> addTok LeftBrace
+        '}' -> addTok RightBrace
         ',' -> addTok Comma
         '.' -> addTok Dot
         '-' -> addTok Minus
@@ -58,7 +60,7 @@ scanTokens input = tokenize input 1 1 []
         addTokWithNext :: TokenType -> String -> [Token]
         addTokWithNext tType extra =
           let newToken = Token tType (c : extra) line
-          in tokenize (tail cs) line (col + 2) (newToken : acc)
+          in tokenize (drop 1 cs) line (col + 2) (newToken : acc)
 
         skipLineComment :: String -> Int -> Int -> [Token]
         skipLineComment rest l c = tokenize (dropWhile (/= '\n') rest) l (c + length (takeWhile (/= '\n') rest)) acc
@@ -79,13 +81,19 @@ scanTokens input = tokenize input 1 1 []
 
         numberLiteral :: String -> Int -> Int -> [Token] -> [Token]
         numberLiteral s l c acc =
-          let (numStr, rest) = span isDigit s
+          let (intPart, afterInt) = span isDigit s
+              (fracPart, rest) = case afterInt of
+                                  ('.' : x : xs) | isDigit x -> 
+                                    let (frac, remaining) = span isDigit (x : xs)
+                                    in ("." ++ frac, remaining)
+                                  _ -> ("", afterInt)
+              numStr = intPart ++ fracPart
               num = read numStr :: Double
           in tokenize rest l (c + length numStr) (Token (Number num) numStr l : acc)
 
         identifier :: String -> Int -> Int -> [Token] -> [Token]
         identifier s l c acc =
-          let (identStr, rest) = span isAlphaNum s
+          let (identStr, rest) = span (\x -> isAlpha x || isAlphaNum x) s
               tType = lookupKeyword identStr
           in tokenize rest l (c + length identStr) (Token tType identStr l : acc)
 

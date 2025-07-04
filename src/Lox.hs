@@ -10,6 +10,8 @@ import Data.IORef
 import Control.Monad (when)
 
 import Scanner (scanTokens)
+import Parser (parse)
+import Interpreter (interpret, createInterpreter, InterpreterState)
 import Token (Token(..), TokenType(..))
 
 runFile :: IORef Bool -> FilePath -> IO ()
@@ -21,28 +23,57 @@ runFile hadErrorRef path = do
 
 runPrompt :: IORef Bool -> IO ()
 runPrompt hadErrorRef = do
-  putStr "> "
-  hFlush stdout
-  maybeLine <- safeGetLine
-  case maybeLine of
-    Nothing -> return () -- EOF
-    Just line -> do
-      run hadErrorRef line
-      writeIORef hadErrorRef False
-      runPrompt hadErrorRef
+  -- Create interpreter state once and reuse it
+  interpreter <- createInterpreter hadErrorRef
+  replLoop hadErrorRef interpreter
   where
-    safeGetLine = do
-      eof <- isEOF
-      if eof
-        then return Nothing
-        else Just <$> getLine
+    replLoop hadErrorRef interpreter = do
+      putStr "> "
+      hFlush stdout
+      maybeLine <- safeGetLine
+      case maybeLine of
+        Nothing -> return () -- EOF
+        Just line -> do
+          runWithInterpreter hadErrorRef interpreter line
+          writeIORef hadErrorRef False
+          replLoop hadErrorRef interpreter
+      where
+        safeGetLine = do
+          eof <- isEOF
+          if eof
+            then return Nothing
+            else Just <$> getLine
 
 run :: IORef Bool -> String -> IO ()
 run hadErrorRef source = do
-  putStrLn ("Running: " ++ source)
+  -- Step 1: Scan tokens
   let tokens = scanTokens source
-  mapM_ print tokens
-  -- If scanning finds an error, you can call reportError here as needed.
+  
+  -- Step 2: Parse tokens into AST
+  parseResult <- parse hadErrorRef tokens
+  case parseResult of
+    Left errorMsg -> do
+      putStrLn $ "Parse error: " ++ errorMsg
+      writeIORef hadErrorRef True
+    Right statements -> do
+      -- Step 3: Create interpreter and execute
+      interpreter <- createInterpreter hadErrorRef
+      interpret interpreter statements
+
+runWithInterpreter :: IORef Bool -> InterpreterState -> String -> IO ()
+runWithInterpreter hadErrorRef interpreter source = do
+  -- Step 1: Scan tokens
+  let tokens = scanTokens source
+  
+  -- Step 2: Parse tokens into AST
+  parseResult <- parse hadErrorRef tokens
+  case parseResult of
+    Left errorMsg -> do
+      putStrLn $ "Parse error: " ++ errorMsg
+      writeIORef hadErrorRef True
+    Right statements -> do
+      -- Step 3: Execute with existing interpreter state
+      interpret interpreter statements
 
 reportError :: IORef Bool -> Int -> String -> IO ()
 reportError hadErrorRef line msg = do

@@ -1,0 +1,49 @@
+// Expression and Operator Tests
+// Testing various expressions and operator precedence
+
+print "=== Expression and Operator Tests ===";
+
+// Arithmetic precedence
+print "2 + 3 * 4 = " + (2 + 3 * 4); // Should be 14
+print "(2 + 3) * 4 = " + ((2 + 3) * 4); // Should be 20
+
+// Division and modulo
+print "10 / 3 = " + (10 / 3);
+print "10 / 2 = " + (10 / 2);
+
+// Negative numbers
+print "-5 + 3 = " + (-5 + 3);
+print "-(5 + 3) = " + (-(5 + 3));
+
+// Boolean expressions
+print "true and true = " + (true and true);
+print "true and false = " + (true and false);
+print "false or true = " + (false or true);
+print "false or false = " + (false or false);
+
+// Mixed type comparisons
+print "5 == 5.0 = " + (5 == 5.0);
+print "hello == hello = " + ("hello" == "hello");
+print "hello != world = " + ("hello" != "world");
+
+// Nil comparisons
+print "nil == nil = " + (nil == nil);
+print "nil == false = " + (nil == false);
+print "nil == 0 = " + (nil == 0);
+
+// String operations
+var str1 = "Hello";
+var str2 = "World";
+print str1 + " " + str2;
+
+// Complex expressions
+var a = 5;
+var b = 10;
+var c = 15;
+print "Complex: " + (a * b + c / 3 - 2);
+
+// Truthiness tests
+print "Truthiness of 0: " + (0 and true);
+print "Truthiness of empty string: " + ("" and true);
+print "Truthiness of nil: " + (nil and true);
+print "Truthiness of false: " + (false and true);

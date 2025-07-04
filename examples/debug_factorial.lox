@@ -1,0 +1,17 @@
+fun factorial(n) {
+    print "factorial called with: " + n;
+    if (n <= 1) {
+        print "base case, returning 1";
+        return 1;
+    } else {
+        var sub = n - 1;
+        print "calculating factorial of: " + sub;
+        var subresult = factorial(sub);
+        print "got subresult: " + subresult;
+        var result = n * subresult;
+        print "returning: " + result;
+        return result;
+    }
+}
+
+print factorial(3);

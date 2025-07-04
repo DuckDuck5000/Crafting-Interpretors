@@ -1,13 +1,13 @@
 cabal-version: 2.2
 
--- This file has been generated from package.yaml by hpack version 0.37.0.
+-- This file has been generated from package.yaml by hpack version 0.38.1.
 --
 -- see: https://github.com/sol/hpack
 
 name:           hlox
 version:        0.1.0.0
-author:         Your Name
-maintainer:     your.email@example.com
+author:         chris rectenwald
+maintainer:     cdrectenwald@example.com
 license:        BSD-3-Clause
 build-type:     Simple
 extra-source-files:
@@ -18,6 +18,10 @@ library
       Token
       Scanner
       Lox
+      Parser
+      Interpreter
+      Environment
+      Expr
   other-modules:
       Paths_hlox
   autogen-modules:
@@ -26,6 +30,8 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , containers
+    , mtl
   default-language: Haskell2010
 
 executable hlox
@@ -39,5 +45,23 @@ executable hlox
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
     , hlox
+    , mtl
+  default-language: Haskell2010
+
+test-suite hlox-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_hlox
+  autogen-modules:
+      Paths_hlox
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hlox
+    , hspec
   default-language: Haskell2010

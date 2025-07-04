@@ -1,0 +1,42 @@
+// Control Flow Test
+// Testing if statements, loops, and blocks
+
+print "=== Control Flow Tests ===";
+
+// If statements
+var x = 15;
+if (x > 10) {
+    print "x is greater than 10";
+} else {
+    print "x is not greater than 10";
+}
+
+// Nested if statements
+if (x > 5) {
+    if (x < 20) {
+        print "x is between 5 and 20";
+    }
+}
+
+// While loop
+print "Counting from 1 to 5:";
+var i = 1;
+while (i <= 5) {
+    print i;
+    i = i + 1;
+}
+
+// For loop
+print "For loop from 0 to 3:";
+for (var j = 0; j < 4; j = j + 1) {
+    print "j = " + j;
+}
+
+// Block scope
+var global = "global";
+{
+    var local = "local";
+    print global; // Should work
+    print local;  // Should work
+}
+// print local; // This would cause an error - local is out of scope

@@ -1,0 +1,25 @@
+// Expression and Operator Tests
+// Testing various expressions and operator precedence
+
+print "=== Expression and Operator Tests ===";
+
+// Arithmetic precedence
+print "2 + 3 * 4 = " + (2 + 3 * 4); // Should be 14
+print "(2 + 3) * 4 = " + ((2 + 3) * 4); // Should be 20
+
+// Division and modulo
+print "10 / 3 = " + (10 / 3);
+print "10 / 2 = " + (10 / 2);
+
+// Negative numbers
+print "-5 + 3 = " + (-5 + 3);
+print "-(5 + 3) = " + (-(5 + 3));
+
+// Boolean expressions
+print "true and true = " + (true and true);
+print "true and false = " + (true and false);
+print "false or true = " + (false or true);
+print "false or false = " + (false or false);
+
+// Mixed type comparisons
+print "5 == 5.0 = " + (5 == 5.0);

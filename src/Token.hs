@@ -1,7 +1,7 @@
 module Token (Token(..), TokenType(..)) where
     
 data TokenType
-  = LeftParen | RightParen | Comma | Dot | Minus | Plus | Semicolon | Slash | Star
+  = LeftParen | RightParen | LeftBrace | RightBrace | Comma | Dot | Minus | Plus | Semicolon | Slash | Star
   | Bang | BangEqual | Equal | EqualEqual | Greater | GreaterEqual
   | Less | LessEqual
   | Identifier String
